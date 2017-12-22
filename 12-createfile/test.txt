@@ -1,0 +1,1 @@
+[]string{"/var/folders/0f/t28yzfh97_q6p01kb4d1pbhh0000gn/T/go-build651342735/command-line-arguments/_obj/exe/main", "--var=value"}
