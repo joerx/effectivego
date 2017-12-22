@@ -5,12 +5,12 @@
 
 ## General
 
-- Stuff created with `make` are reference types
+- Things created with `make` are reference types
 
 ## Assignment
 
 - Normally vars can only be declared once in scope
-- For multi-assigments (i.e. func cal returns multiple values) some extra rule apply
+- For multi-assigments (i.e. func cal returns multiple values) some extra rules apply:
 
     ```go
     res, err := foo() // this is fine
@@ -30,7 +30,7 @@
 
 - Runes represent multi-byte characters, i.e. the ones used by utf-8
 - utf-8 codepoints use up to 4 bytes, so `rune` is actually an alias for `int32`
-- A range over a string actually iterates over its runes:
+- A range over a string iterates over its runes:
 
     ```go
     str := "abc日本\x80語"
@@ -42,9 +42,20 @@
 
 ## Type Switching and Casting
 
-- Type switch looks like this: `t := thing.(type)`, `t` will have dynamic type of `thing`
+- Type switches looks like this:
+
+    ```go
+    // t will have dynamic type of thing
+    switch t := thing.(type) {
+    case string:
+        fmt.Println("it is a string")
+    default:
+        fmt.Println("unknown type")
+    }
+    ```
+
 - Type assertions use an actual type inside the parens: `t := thing.(string)`
-- Use 'comma, ok' idiom or a runtime error will be thrown:
+- If type doesn't match, a runtime error will be thrown, or use "comma, ok" idiom:
 
     ```go
     if t, ok := thing.(string); ok {
